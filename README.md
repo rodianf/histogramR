@@ -11,33 +11,13 @@ histogramR is a tool based on dplyr and ggplot2 that creates classical frequency
 Installation
 ------------
 
-histogramR is stored in this github repository, thus package devtools is needed to install. If you are on a fresh install of R, then next code will install a lot of packages.
+histogramR is stored in this github repository, thus package devtools is needed to install. If you are on a fresh install of R, then following code will install a lot of packages.
 
 ``` r
 install.packages("devtools")
-#> Installing package into '/home/rodian/R/x86_64-pc-linux-gnu-library/3.4'
-#> (as 'lib' is unspecified)
 devtools::install_github("rodianf/histogramR")
-#> Skipping install of 'histogramR' from a github remote, the SHA1 (13b0c332) has not changed since last install.
-#>   Use `force = TRUE` to force installation
 
 library(histogramR)
-#> Loading required package: dplyr
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-#> Loading required package: ggplot2
-#> Loading required package: cowplot
-#> 
-#> Attaching package: 'cowplot'
-#> The following object is masked from 'package:ggplot2':
-#> 
-#>     ggsave
 ```
 
 Usage
@@ -47,15 +27,15 @@ Usage
 
 This function creates a classical frequency distribution table, of class tibble, with five columns.
 
--   **variable name** Class intervals computed by selected method, default is "Sturges".
+-   **variable name**: Class intervals computed by selected method, default is "Sturges".
 
--   **f** The counts or frequency of the variable in a class interval.
+-   **f**: Counts or frequency of the variable in a class interval.
 
--   **rf** The relative frequency or density.
+-   **rf**: Relative frequency or density.
 
--   **cf** The cummulative frequency.
+-   **cf**: Cummulative frequency.
 
--   **crf** The cummulative relative frequency.
+-   **crf**: Cummulative relative frequency.
 
 As the return object is a tibble, functions from dplyr can be applied. To include in Rmarkdown use `knitr::kable` for better results.
 
