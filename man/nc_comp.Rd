@@ -26,7 +26,7 @@ nc_comp(x, density = FALSE, xlab = NULL, ...)
 \item{xlab}{a character string, X axis label. By default it gets from object vector name with \code{deparse(substitute(x))}.}
 }
 \value{
-A list of values.
+A \emph{nc_comp} object.
 }
 \description{
 Compare the methods for calculation of the number of classes from a numerical random variable.

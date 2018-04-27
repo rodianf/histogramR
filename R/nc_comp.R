@@ -38,7 +38,6 @@ nc_comp.default <- function(x, density = FALSE, xlab = NULL, ...) {
 print.nc_comp <- function(x, ...) {
   cat("Class number methods comparison.\n\n")
   print(x$nclasses)
-  print(x$plots)
 }
 
 #' @describeIn nc_comp ggplot2 plot output from \code{nc_comp} function.
