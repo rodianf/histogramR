@@ -6,18 +6,38 @@ histogramR
 Overview
 --------
 
-histogramR is a tool based on dplyr and ggplot2 that creates classical frequency ditribution tables, histograms and frequency polygons. Also, a comparison between number of classes compute methods, as Sturges, Friedman-Diaconis and Scott, are performed. This package is part of a final work in Computational Statistics course at the Master of Applied Statistics in Universidad del Norte, Colombia.
+histogramR is a tool based on dplyr and ggplot2 that creates classical frequency distribution tables, histograms and frequency polygons. Also, a comparison between number of classes compute methods (Sturges, Friedman-Diaconis and Scott) are performed. This package is part of a final work in Computational Statistics course at the Master of Applied Statistics in Universidad del Norte, Colombia.
 
 Installation
 ------------
 
-histogramR is stored in this github repository, thus package devtools is needed to install.
+histogramR is stored in this github repository, thus package devtools is needed to install. If you are on a fresh install of R, then next code will install a lot of packages.
 
 ``` r
-install.packages(devtools)
+install.packages("devtools")
+#> Installing package into '/home/rodian/R/x86_64-pc-linux-gnu-library/3.4'
+#> (as 'lib' is unspecified)
 devtools::install_github("rodianf/histogramR")
+#> Skipping install of 'histogramR' from a github remote, the SHA1 (13b0c332) has not changed since last install.
+#>   Use `force = TRUE` to force installation
 
 library(histogramR)
+#> Loading required package: dplyr
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+#> Loading required package: ggplot2
+#> Loading required package: cowplot
+#> 
+#> Attaching package: 'cowplot'
+#> The following object is masked from 'package:ggplot2':
+#> 
+#>     ggsave
 ```
 
 Usage
@@ -53,7 +73,7 @@ library(MASS)
 
 data("Melanoma")
 
-thickness <- Melanoma$thickness
+attach(Melanoma)
 
 tab_freq(thickness)
 #> # A tibble: 8 x 5
