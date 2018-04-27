@@ -1,0 +1,105 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+#install.packages("~/Maestría/Estadística computacional/histogramR_0.1.0.tar.gz", repos = NULL)
+#library(histogramR)
+```
+
+# histogramR
+
+## Overview
+
+histogramR is a tool based on dplyr and ggplot2 that creates classical frequency ditribution tables, histograms and frequency polygons. Also, a comparison between number of classes compute methods, as Sturges, Friedman-Diaconis and Scott, are performed. This package is part of a final work in Computational Statistics course at the Master of Applied Statistics in Universidad del Norte, Colombia.
+
+## Installation
+
+histogramR is stored in this github repository, thus package devtools is needed to install.
+
+```{r eval=FALSE, include=TRUE}
+install.packages(devtools)
+devtools::install_github("rodianf/histogramR")
+
+library(histogramR)
+```
+
+## Usage
+
+### tab_freq
+
+This function creates a classical frequency distribution table, of class tibble, with five columns.
+
+* **variable name** Class intervals computed by selected method, default is "Sturges".
+
+* **f** The counts or frequency of the variable in a class interval.
+
+* **rf** The relative frequency or density.
+
+* **cf** The cummulative frequency.
+
+* **crf** The cummulative relative frequency.
+
+As the return object is a tibble, functions from dplyr can be applied. To include in Rmarkdown use `knitr::kable` for better results.
+
+#### Note
+
+Classes with zero frequency are dropped from table. This is caused by function `group_by` from dplyr package, however a correction for this behavior will be implemented soon. See https://github.com/tidyverse/dplyr/pull/3492.
+
+```{r}
+library(MASS)
+
+data("Melanoma")
+
+thickness <- Melanoma$thickness
+
+tab_freq(thickness)
+
+tab_freq(thickness, nclass = "FD")
+
+tab_freq(thickness) %>% 
+  rename("Frequency" = f,
+         "Relative frequency" = rf)
+
+tab_freq(thickness, nclass = "scott") %>% 
+  rename("Frequency" = f,
+         "Relative frequency" = rf) %>% 
+  knitr::kable()
+```
+
+### plot_freq
+
+This function creates an histogram and frequency polygon or a cummulative frequency polygon. The return object is a ggplot2 plot, thus layers can be applied.
+
+```{r}
+plot_freq(thickness)
+
+plot_freq(thickness, nclass = "FD", density = TRUE)
+
+plot_freq(thickness, nclass = "scott", density = TRUE, cfp = TRUE) +
+  theme_classic()
+```
+
+### nc_comp
+
+This function compare the methods for calculation of the number of classes from a numerical random variable. Uses `plot_freq` function to generate plots. Generics as `print`, `summary` and `ggplot` can be used.
+
+```{r}
+nc_comp(thickness)
+
+comparison <- nc_comp(thickness)
+
+print(comparison)
+
+summary(comparison)
+
+ggplot(comparison)
+```
+
