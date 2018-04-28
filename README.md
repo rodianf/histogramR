@@ -127,14 +127,14 @@ This function creates an histogram and frequency polygon or a cummulative freque
 plot_freq(thickness)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_github/plot_freq-1.png)
 
 ``` r
 
 plot_freq(thickness, nclass = "FD", density = TRUE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-2.png)
+![](README_files/figure-markdown_github/plot_freq-2.png)
 
 ``` r
 
@@ -142,7 +142,7 @@ plot_freq(thickness, nclass = "scott", density = TRUE, cfp = TRUE) +
   theme_classic()
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-3.png)
+![](README_files/figure-markdown_github/plot_freq-3.png)
 
 ### nc\_comp
 
@@ -183,4 +183,4 @@ summary(comparison)
 ggplot(comparison)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/nc_comp-1.png)

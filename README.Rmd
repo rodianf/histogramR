@@ -22,7 +22,7 @@ histogramR is a tool based on dplyr and ggplot2 that creates classical frequency
 
 histogramR is stored in this github repository, thus package devtools is needed to install. If you are on a fresh install of R, then following code will install a lot of packages.
 
-```{r eval=FALSE, include=TRUE}
+```{r install, eval=FALSE, include=TRUE}
 install.packages("devtools")
 devtools::install_github("rodianf/histogramR")
 
@@ -51,7 +51,7 @@ As the return object is a tibble, functions from dplyr can be applied. To includ
 
 Classes with zero frequency are dropped from table. This is caused by function `group_by` from dplyr package, however a correction for this behavior will be implemented soon. See https://github.com/tidyverse/dplyr/pull/3492.
 
-```{r}
+```{r tab_freq}
 library(MASS)
 
 data("Melanoma")
@@ -76,7 +76,7 @@ tab_freq(thickness, nclass = "scott") %>%
 
 This function creates an histogram and frequency polygon or a cummulative frequency polygon. The return object is a ggplot2 plot, thus layers can be applied.
 
-```{r}
+```{r plot_freq}
 plot_freq(thickness)
 
 plot_freq(thickness, nclass = "FD", density = TRUE)
@@ -89,7 +89,7 @@ plot_freq(thickness, nclass = "scott", density = TRUE, cfp = TRUE) +
 
 This function compare the methods for calculation of the number of classes from a numerical random variable. Uses `plot_freq` function to generate plots. Generics as `print`, `summary` and `ggplot` can be used.
 
-```{r}
+```{r nc_comp}
 nc_comp(thickness)
 
 comparison <- nc_comp(thickness)
